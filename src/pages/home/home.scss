@@ -1,3 +1,74 @@
 page-home {
-
+  ion-content {
+    background: url('../../assets/download.png') no-repeat;
+    .noe {
+      width: 300px;
+      margin: 0 auto;
+      .sok {
+        button {
+          border-radius: 0 !important;
+          background-color: #392d84;
+          color: #fff6ed;
+          margin: 2px !important;
+          font-size: 2rem !important;
+          border-color: #392d84;
+          ion-icon {
+            color: #29dccb;
+          }
+        }
+      }
+      .text {
+        color: #fff6ed;
+        text-align: center;
+      }
+    }
+    .content {
+      .content-header {
+        color: #fff6ed;
+        text-align: center;
+        h1 {
+          font-size: 46px;
+          font-weight: 900;
+        }
+        h3 {
+          font-size: 16px;
+          font-weight: 500;
+        }
+      }
+      ion-card {
+        background: #392d84;
+        box-shadow: none !important;
+        -webkit-box-shadow: none !important;
+        ion-card-header {
+          color: #e53030;
+          font-weight: bold;
+          padding-bottom: 0;
+        }
+        ion-list-header {
+          color: #fff6ed;
+          text-transform: none !important;
+          ion-label {
+            margin-bottom: 0;
+          }
+        }
+        .item-md {
+            background: none !important;
+        }
+      }
+      .forbruk {
+        background: #29dccb;
+        ion-card-header {
+          color: #fff6ed;
+        }
+      }
+    }
+    .left {
+      float: left;
+      text-align: left;
+    }
+    .right {
+      float: right;
+      text-align: right;
+    }
+  }
 }

@@ -1,14 +1,69 @@
-<ion-header>
-  <ion-navbar>
+<ion-header transparent>
+  <ion-navbar transparent>
     <ion-title>
-      Ionic Blank
+      <h2 color="white">Cashless</h2>
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content>
+
+  <div class="noe">
+
+    <ion-item class="sok">
+      <ion-input type="text" placeholder="Kortnummer" [(ngModel)]="cardId">
+      </ion-input>
+      <button *ngIf="!searched" ion-button outline item-end (click)="sok()" icon-left>
+        <ion-icon name="add"></ion-icon>
+        &nbsp;HENT
+    </button>
+      <button *ngIf="searched" ion-button outline item-end (click)="avbryt()" icon-only clear>
+        <ion-icon name="close-circle" class="icon-cancel"></ion-icon>
+    </button>
+    </ion-item>
+
+    <div *ngIf="!searched" class="text">
+      <p>Tast inn kortnummeret på ditt cashlesskort og få oversikt over saldo og varekjøp.</p>
+    </div>
+
+  </div>
+
+  <div class="content" *ngIf="searched">
+    <div class="content-header">
+      <h1>{{cashlessData.saldo}} kr</h1>
+      <h3>Sist oppdatert: {{lastRefreshDate | date: 'dd.MM.yy'}} kl. {{lastRefreshDate | date: 'HH:mm'}}</h3>
+    </div>
+
+    <ion-card *ngFor="let transactionDate of cashlessData.dates; let first = first;" [ngClass]="getClassName(first)">
+      <ion-card-header>{{ transactionDate.date | date: 'dd.MM.yy'}}</ion-card-header>
+
+      <ion-card-content>
+        <ion-list class="accordion-list" no-lines no-padding>
+          <ion-list-header *ngFor="let transaction of transactionDate.transactions">
+            <ion-row>
+              <ion-col class="left">
+                {{ transaction.description }}
+              </ion-col>
+              <ion-col class="right">
+                {{ transaction.amount }}
+              </ion-col>
+            </ion-row>
+          </ion-list-header>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="forbruk">
+      <ion-row>
+        <ion-col class="left">
+          <ion-card-header>Totalt forbruk</ion-card-header>
+        </ion-col>
+        <ion-col class="right">
+          <ion-card-header>233</ion-card-header>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </div>
+
+
 </ion-content>
